@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation=
+			"http://www.springframework.org/schema/beans 
+            http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+            http://www.springframework.org/schema/context 
+            http://www.springframework.org/schema/context/spring-context-4.2.xsd
+            http://www.springframework.org/schema/aop 
+            http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+            http://cxf.apache.org/jaxws
+            http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<bean id="serviceSignalement"
+		class="fr.cap.wikimnv.moderation.service.impl.ServiceSignalementImpl">
+		<property name="sCrud" ref="sCrud"></property>
+	</bean>
+
+	<bean id="sModeration"
+		class="fr.cap.wikimnv.moderation.service.impl.ServiceModerationImpl">
+		<property name="serviceSignalement" ref="serviceSignalement"></property>
+	</bean>
+
+	<bean id="sCrud" class="fr.cap.wikimnv.global.service.impl.CrudImplBouchon" />
+
+
+	<bean id="sLogger" class="fr.cap.wikimnv.logger.LoggerMNV" />
+
+
+	<aop:config>
+		<aop:aspect id="sLoggerAspect" ref="sLogger">
+			<aop:pointcut id="perfLogger"
+				expression="execution(* fr.cap.wikimnv.moderation.service.impl..*(..))" />
+			<aop:around method="logProcess" pointcut-ref="perfLogger" />
+			<!--  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+			<aop:pointcut id="eventLogger"
+				expression="execution(* fr.cap.wikimnv.moderation.service.impl..*(..))" />
+			<aop:before method="logEvent" pointcut-ref="eventLogger"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>
