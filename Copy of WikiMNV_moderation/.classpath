@@ -12,12 +12,13 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="//EDU-INSTRUCTEUR/partage/Archi_Logi/Livraisons/wikimnv-LoggerCli_2015-08-27.jar"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Paris/Livraisons/WikiMNV-core-Commons-2015.08.28.jar"/>
+	<classpathentry kind="lib" path="C:/Paris/Livraisons/WikiMNV-Core-Commons-2015.08.31.jar"/>
+	<classpathentry kind="lib" path="C:/Paris/Livraisons/wikimnv-moderation-2015-08-21.jar"/>
+	<classpathentry kind="lib" path="C:/Paris/Livraisons/WikiMNV-Core-Persistance-cli_2015-09-01.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
